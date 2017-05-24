@@ -3,6 +3,6 @@
 <ol>
 <% @tasks.each do |task| %>
   <li><b><%= task.title %></b> - Category: <%= "Personal" %>
-  <p><%= task.description %></p></li>
+  <p><%= task.description %> | <%= link_to "Task Details", task_path(task.id) %></p></li><br>
 <% end %>
 </ol>
