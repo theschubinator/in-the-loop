@@ -1,0 +1,8 @@
+<h1>To DO List</h1>
+
+<ol>
+<% @tasks.each do |task| %>
+  <li><b><%= task.title %></b> - Category: <%= "Personal" %>
+  <p><%= task.description %></p></li>
+<% end %>
+</ol>

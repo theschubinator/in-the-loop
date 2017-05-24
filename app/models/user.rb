@@ -8,11 +8,10 @@ class User < ApplicationRecord
   has_many :categories, through: :tasks
 
   enum role: [:user, :admin]
-
   after_initialize :set_default_role
 
   def set_default_role
   	self.role || self.role = :user
   end
-  
+
 end
