@@ -3,3 +3,4 @@
 <p><%= @task.description %></p>
 <%= link_to "View All Tasks", tasks_path %> 
 <%= link_to "Edit Task", edit_task_path(@task) %>
+<%= link_to "Delete Task", task_path, method: "delete" %>
