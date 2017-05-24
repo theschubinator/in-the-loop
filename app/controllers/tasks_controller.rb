@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		current_user.tasks.build(task_params)
 		current_user.save
 		redirect_to tasks_path
@@ -19,6 +20,6 @@ class TasksController < ApplicationController
 
 	private
 	  def task_params
-	  	params.require(:task).permit(:title, :description)
+	  	params.require(:task).permit(:title, :description, category_ids: [])
 	  end
 end

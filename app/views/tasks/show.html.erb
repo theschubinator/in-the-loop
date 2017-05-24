@@ -1,3 +1,4 @@
 <h1><%= @task.title %></h1>
+<p>Categories: <%= task_categories(@task) %></p>
 <p><%= @task.description %></p>
 <%= link_to "View All Tasks", tasks_path %>
