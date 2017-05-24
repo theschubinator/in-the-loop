@@ -8,6 +8,7 @@ end
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'dotenv'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'pundit'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
