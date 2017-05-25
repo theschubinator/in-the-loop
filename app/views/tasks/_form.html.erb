@@ -2,9 +2,14 @@
 <%= form_for @task do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br><br>
-  <%= f.label "Categories:" %>
-  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
-  <%= link_to "New Category", new_category_path %><br><br>
+
+  <%= f.label "Select Categories:" %>
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %><br>
+  <p>-- OR --</p>
+  <%= fields_for :categories do |cat| %>
+    <%= cat.label "Add New Category:" %>
+    <%= cat.text_field :name %>
+  <% end %><br><br>
 
 
   <%= f.label :description %><br>
