@@ -6,9 +6,8 @@
   <%= f.label "Select Categories:" %>
   <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %><br>
   <p>-- OR --</p>
-  <%= fields_for :categories do |cat| %>
-    <%= cat.label "Add New Category:" %>
-    <%= cat.text_field :name %>
+  <%= f.fields_for :categories, @task.categories.build do |category| %>
+    <%= category.text_field :name %>
   <% end %><br><br>
 
 
