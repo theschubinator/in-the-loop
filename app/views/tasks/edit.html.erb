@@ -1,1 +1,4 @@
-<%= render 'form' %>
+<%= form_for @task, url: user_task_path(@task) do |f| %>
+<%= render 'form', f: f %>
+<% end %>
+

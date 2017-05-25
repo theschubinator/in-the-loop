@@ -1,8 +1,8 @@
 <h1>To DO List</h1>
-<%= link_to "New Task", new_task_path %>
+<%= link_to "New Task", new_user_task_path %>
 <ol>
 <% @tasks.each do |task| %>
   <li><b><%= task.title %></b> - Category: <%= task_categories(task) %>
-  <p><%= task.description %> | <%= link_to "Task Details", task_path(task.id) %></p></li><br>
+  <p><%= task.description %> | <%= link_to "Task Details", user_task_path(current_user, task.id) %></p></li><br>
 <% end %>
 </ol>

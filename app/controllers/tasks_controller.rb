@@ -8,10 +8,12 @@ class TasksController < ApplicationController
 	end
 
 	def create
+		@user = current_user
 	  current_user.tasks.build(task_params)
 	  current_user.tasks.last.categories << Category.create(category_params)
 	  current_user.save
-	  redirect_to tasks_path
+	#  redirect_to tasks_path
+	  redirect_to user_tasks_path(current_user)
 	end
 
 	def edit
@@ -22,7 +24,7 @@ class TasksController < ApplicationController
 	  find_task
 	  @task.update(task_params)
 	  @task.categories << Category.create(category_params)
-	  redirect_to task_path(@task)
+	  redirect_to user_task_path(current_user, @task)
 	end
 
 	def show
@@ -31,9 +33,9 @@ class TasksController < ApplicationController
 
 	def destroy
 	  find_task
-	  delete_empty_category
+	  delete_category
 	  @task.destroy
-	  redirect_to tasks_path
+	  redirect_to user_tasks_path(current_user)
 	end
 
 	private
@@ -49,10 +51,8 @@ class TasksController < ApplicationController
 	  	@task = Task.find(params[:id])
 	  end
 
-	  def delete_empty_category
-	  	@task.categories.each do |category|
-	  		category.destroy if category.tasks.size <= 1
-	  	end
+	  def delete_category
+	  	@task.categories.each { |category| category.destroy if category.tasks.size <= 1 }
 	  end
 
 end

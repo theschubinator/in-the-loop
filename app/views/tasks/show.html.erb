@@ -1,6 +1,6 @@
 <h1><%= @task.title %></h1>
 <p>Categories: <%= task_categories(@task) %></p>
 <p><%= @task.description %></p>
-<%= link_to "View All Tasks", tasks_path %> 
-<%= link_to "Edit Task", edit_task_path(@task) %>
-<%= link_to "Delete Task", task_path, method: "delete" %>
+<%= link_to "View All Tasks", user_tasks_path(current_user) %> 
+<%= link_to "Edit Task", edit_user_task_path(current_user, @task) %>
+<%= link_to "Delete Task", user_task_path, method: "delete" %>
