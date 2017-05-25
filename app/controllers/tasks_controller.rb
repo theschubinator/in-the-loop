@@ -31,6 +31,7 @@ class TasksController < ApplicationController
 
 	def destroy
 	  find_task
+	  delete_empty_category
 	  @task.destroy
 	  redirect_to tasks_path
 	end
@@ -47,4 +48,11 @@ class TasksController < ApplicationController
 	  def find_task
 	  	@task = Task.find(params[:id])
 	  end
+
+	  def delete_empty_category
+	  	@task.categories.each do |category|
+	  		category.destroy if category.tasks.size <= 1
+	  	end
+	  end
+
 end
