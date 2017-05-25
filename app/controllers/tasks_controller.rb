@@ -10,7 +10,7 @@ class TasksController < ApplicationController
 	def create
 		@user = current_user
 	  current_user.tasks.build(task_params)
-	  current_user.tasks.last.categories << Category.create(category_params)
+	  current_user.tasks.last.categories << Category.create(category_params) if !category_params[:name].empty?
 	  current_user.save
 	#  redirect_to tasks_path
 	  redirect_to user_tasks_path(current_user)
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
 	def update
 	  find_task
 	  @task.update(task_params)
-	  @task.categories << Category.create(category_params)
+	  @task.categories << Category.create(category_params) if !category_params[:name].empty?
 	  redirect_to user_task_path(current_user, @task)
 	end
 
