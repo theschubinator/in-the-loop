@@ -1,6 +1,11 @@
 class TasksController < ApplicationController
 	def index
-	  @tasks = current_user.tasks.where(completed: 0)
+	  @current_tasks = current_user.tasks.where(completed: 0)
+	  @completed_tasks = current_user.tasks.where(completed: 1)
+	end
+
+	def completed
+	  @tasks = current_user.tasks.where(completed: 1)
 	end
 
 	def new

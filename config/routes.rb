@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :categories
   get 'admin/:id/users', to: "admin#users", as: "admin_users"
   get 'admin/:id/users/:user_id', to: "admin#user_show", as: "admin_user"
+  get 'users/:id/completed_tasks', to: "tasks#completed", as: "user_completed_tasks"
   
   root 'home#index'
 end

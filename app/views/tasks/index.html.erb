@@ -3,8 +3,10 @@
 <h1>To DO List</h1>
 <%= link_to "New Task", new_user_task_path %>
 
+<h2>Current Tasks</h2>
+
 <ol>
-<% @tasks.each do |task| %>
+<% @current_tasks.each do |task| %>
   <li>
   <%= form_for(task, url: user_task_path(current_user, task)) do |f| %>
     <%= f.check_box :completed%>
@@ -17,3 +19,23 @@
   </p></li><br>
 <% end %>
 </ol>
+
+<h2>Completed Tasks</h2>
+
+<ol>
+<% @completed_tasks[0..4].each do |task| %>
+  <li>
+  <%= form_for(task, url: user_task_path(current_user, task)) do |f| %>
+    <%= f.check_box :completed%>
+    <%= f.submit %>
+  <% end %> 
+
+  <b><%= task.title %></b> - Category: <%= task_categories(task) %>
+  <p><%= task.description %> | <%= link_to "Details", user_task_path(current_user, task.id) %>
+  	<br>Completed: <%= task.completed? %>
+  </p></li><br>
+<% end %>
+</ol>
+
+
+<%= link_to "View All Completed Tasks", user_completed_tasks_path(current_user) %>
