@@ -1,5 +1,8 @@
+<%= render 'admin_tools' if current_user.admin? %>
+
 <h1>To DO List</h1>
 <%= link_to "New Task", new_user_task_path %>
+
 <ol>
 <% @tasks.each do |task| %>
   <li><b><%= task.title %></b> - Category: <%= task_categories(task) %>

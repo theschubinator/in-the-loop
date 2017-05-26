@@ -1,0 +1,5 @@
+<ol>
+<% @users.each do |user| %>
+  <li><%= link_to user.email, admin_user_path(current_user, user) %></li>
+<% end %>
+</ol>

@@ -1,0 +1,8 @@
+<h1>Welcome Administrator: <%= current_user.email %></h1>
+
+<h3>Administration Tools</h3>
+<%= link_to "Group Tasks" %> |
+<%= link_to "New Group Task" %> |
+<%= link_to "Users", admin_users_path(current_user) %>
+
+
