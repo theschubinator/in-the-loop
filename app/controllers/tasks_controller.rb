@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 	def index
-	  @tasks = current_user.tasks
+	  @tasks = current_user.tasks.where(completed: 0)
 	end
 
 	def new
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
 
 	private
 	  def task_params
-	  	params.require(:task).permit(:title, :description, category_ids: [], categories_attributes: [:name])
+	  	params.require(:task).permit(:title, :completed, :description, category_ids: [], categories_attributes: [:name])
 	  end
 
 	  def find_task
