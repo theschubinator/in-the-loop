@@ -1,13 +1,12 @@
 
-
   <%= f.label :title %>
   <%= f.text_field :title %><br><br>
-
+ 
   <%= f.label "Select Categories:" %>
-  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %><br>
+  <%= f.collection_check_boxes(:category_ids, current_user.categories, :id, :name) %><br>
   <p>-- OR --</p>
   <%= f.fields_for :categories, @task.categories.build do |category| %>
-    <%= category.text_field :name %>
+    <%= category.text_field :name%>
   <% end %><br><br>
 
 

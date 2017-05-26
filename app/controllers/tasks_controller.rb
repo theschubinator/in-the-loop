@@ -44,6 +44,7 @@ class TasksController < ApplicationController
 	  end
 
 	  def delete_category
+	  #	binding.pry
 	  	@task.categories.each { |category| category.destroy if category.tasks.size <= 1 }
 	  end
 
