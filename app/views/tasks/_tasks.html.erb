@@ -1,0 +1,11 @@
+<li>
+  <%= form_for(task, url: user_task_path(current_user, task)) do |f| %>
+    <%= f.check_box :completed%>
+    <%= f.submit %>
+  <% end %> 
+
+  <b><%= task.title %></b> - Category: <%= task_categories(task) %>
+  <p><%= task.description %> | <%= link_to "Details", user_task_path(current_user, task.id) %>
+  	<br>Completed: <%= task.completed? %>
+  </p>
+</li><br>
