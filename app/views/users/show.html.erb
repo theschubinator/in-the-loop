@@ -1,7 +1,7 @@
 <h1>User Profile</h1>
 <h3>Email Address: <%= current_user.email %>
 
-<%= form_for @user do |f| %>
+<%= form_for current_user do |f| %>
   <%= render 'admin_status', f: f %>
 <%= f.submit %>
 <% end %>
