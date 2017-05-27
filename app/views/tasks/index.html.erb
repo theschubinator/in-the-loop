@@ -4,6 +4,7 @@
 <%= link_to "New Task", new_user_task_path %>
 
 <h2>Current Tasks</h2>
+<p><%= "You have no current tasks." if @current_tasks.empty? %></p>
 
 <ol>
 <% @current_tasks.each do |task| %>
@@ -12,6 +13,7 @@
 </ol>
 
 <h2>Completed Tasks</h2>
+<p><%= "You have not completed any tasks." if @current_tasks.empty? %></p>
 
 <ol>
 <% @completed_tasks[0..4].each do |task| %>

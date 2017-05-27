@@ -14,7 +14,6 @@ class TasksController < ApplicationController
 
 	def create
 	  @task = current_user.tasks.build(task_params)
-
 	  if @task.save
 	    redirect_to user_tasks_path(current_user)
 	  else
@@ -30,7 +29,7 @@ class TasksController < ApplicationController
 	def update
 	  find_task
 	  @task.update(task_params)
-	  redirect_to user_task_path(current_user, @task)
+	  redirect_to user_tasks_path(current_user)
 	end
 
 	def show
